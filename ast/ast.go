@@ -144,3 +144,25 @@ func (il *IntergerLiteral) TokenLiteral() string {
 func (il *IntergerLiteral) String() string {
 	return il.Token.Literal
 }
+
+// making the ast for PrefixExpression
+type PrefixExpression struct {
+	Token    token.Token // prefix token for e.g. !
+	Operator string
+	Right    Expression
+}
+
+func (pe *PrefixExpression) expressionNode() {}
+func (pe *PrefixExpression) TokenLiteral() string {
+	return pe.Token.Literal
+}
+func (pe *PrefixExpression) String() string {
+	var out bytes.Buffer
+
+	out.WriteString("(")
+	out.WriteString(pe.Operator)
+	out.WriteString(pe.Right.String())
+	out.WriteString(")")
+
+	return out.String()
+}
