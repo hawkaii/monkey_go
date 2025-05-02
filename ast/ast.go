@@ -131,17 +131,17 @@ func (es *ExpressionStatement) String() string {
 	return ""
 }
 
-type IntergerLiteral struct {
+type IntegerLiteral struct {
 	Token token.Token
 	Value int64
 }
 
-func (il *IntergerLiteral) expressionNode() {}
-func (il *IntergerLiteral) TokenLiteral() string {
+func (il *IntegerLiteral) expressionNode() {}
+func (il *IntegerLiteral) TokenLiteral() string {
 	return il.Token.Literal
 }
 
-func (il *IntergerLiteral) String() string {
+func (il *IntegerLiteral) String() string {
 	return il.Token.Literal
 }
 
@@ -189,3 +189,14 @@ func (oe *InfixExpression) String() string {
 
 	return out.String()
 }
+
+//ast for boolean
+
+type Boolean struct {
+	Token token.Token
+	Value bool
+}
+
+func (b *Boolean) expressionNode()      {}
+func (b *Boolean) TokenLiteral() string { return b.Token.Literal }
+func (b *Boolean) String() string       { return b.Token.Literal }
