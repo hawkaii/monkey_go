@@ -7,6 +7,7 @@ import (
 
 	"github.com/hawkaii/monkey_go/evaluator"
 	"github.com/hawkaii/monkey_go/lexer"
+	"github.com/hawkaii/monkey_go/object"
 	"github.com/hawkaii/monkey_go/parser"
 )
 
@@ -27,6 +28,7 @@ const MONKEY_FACE = `
 
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
+	env := object.NewEnvironement()
 
 	for {
 		fmt.Print(PROMPT)
@@ -45,7 +47,7 @@ func Start(in io.Reader, out io.Writer) {
 			continue
 		}
 
-		evaluated := evaluator.Eval(program)
+		evaluated := evaluator.Eval(program, env)
 		if evaluated != nil {
 
 			io.WriteString(out, evaluated.Inspect())
