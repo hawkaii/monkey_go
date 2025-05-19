@@ -20,12 +20,6 @@ type Expression interface {
 	expressionNode()
 }
 
-type FunctionLiteral struct {
-	Token      token.Token // The 'fn' token
-	Parameters []*Identifier
-	Body       *BlockStatement
-}
-
 type Program struct {
 	Statements []Statement
 }

@@ -94,7 +94,7 @@ func (rv *ReturnValue) Inspect() string {
 type Function struct {
 	Parameters []*ast.Identifier
 	Body       *ast.BlockStatement
-	env        *Environment
+	Env        *Environment
 }
 
 func (f *Function) Type() ObjectType { return FUNCTION_OBJ }
